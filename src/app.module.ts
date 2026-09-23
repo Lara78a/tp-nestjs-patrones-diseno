@@ -5,6 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
+
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -17,6 +19,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     }),
     OrdersModule,
     ProductsModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
