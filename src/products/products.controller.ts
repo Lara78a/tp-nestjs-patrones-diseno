@@ -6,7 +6,9 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
+
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -21,8 +23,28 @@ export class ProductsController {
   }
 
   @Get()
-  findAll() {
+  findAll(
+    @Query('minPrice') minPrice?: string,
+    @Query('maxPrice') maxPrice?: string,
+  ) {
+    if (minPrice !== undefined || maxPrice !== undefined) {
+      return this.productsService.findByPriceRange(
+        minPrice !== undefined ? Number(minPrice) : undefined,
+        maxPrice !== undefined ? Number(maxPrice) : undefined,
+      );
+    }
+
     return this.productsService.findAll();
+  }
+
+  @Get('category/:categoryId')
+  findByCategory(@Param('categoryId') categoryId: string) {
+    return this.productsService.findByCategory(Number(categoryId));
+  }
+
+  @Get('search')
+  searchByName(@Query('name') name: string) {
+    return this.productsService.searchByName(name);
   }
 
   @Get(':id')

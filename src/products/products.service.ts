@@ -22,6 +22,32 @@ export class ProductsService {
     return this.products;
   }
 
+  findByCategory(categoryId: number): Product[] {
+    return this.products.filter(
+      (product) => product.categoryId === categoryId,
+    );
+  }
+
+  searchByName(name: string): Product[] {
+    return this.products.filter((product) =>
+      product.name.toLowerCase().includes(name.toLowerCase()),
+    );
+  }
+
+  findByPriceRange(minPrice?: number, maxPrice?: number): Product[] {
+    return this.products.filter((product) => {
+      if (minPrice !== undefined && product.price < minPrice) {
+        return false;
+      }
+
+      if (maxPrice !== undefined && product.price > maxPrice) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
   findOne(id: number): Product {
     const product = this.products.find(
       (product) => product.id === id,
