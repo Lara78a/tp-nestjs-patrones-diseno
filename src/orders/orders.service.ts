@@ -2,11 +2,18 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { Order } from './entities/order.entity';
+import {
+  ExternalPaymentService,
+  PaymentAdapter,
+} from './adapters/payment.adapter';
 
 @Injectable()
 export class OrdersService {
   private orders: Order[] = [];
   private nextId = 1;
+private paymentAdapter = new PaymentAdapter(
+  new ExternalPaymentService(),
+);
 
   create(createOrderDto: CreateOrderDto): Order {
     const order: Order = {
@@ -14,8 +21,9 @@ export class OrdersService {
       ...createOrderDto,
     };
 
-    this.orders.push(order);
+    this.paymentAdapter.pay(order.quantity);
 
+    this.orders.push(order);
     return order;
   }
 

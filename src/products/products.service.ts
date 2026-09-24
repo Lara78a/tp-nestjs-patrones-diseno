@@ -1,25 +1,33 @@
-import {
-  DiscountPriceStrategy,
-  ProductPriceContext,
-  RegularPriceStrategy,
-} from './strategies/product-price.strategy';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
+import { ProductFactory } from './factories/product.factory';
+import {
+  ProductPriceContext,
+  RegularPriceStrategy,
+} from './strategies/product-price.strategy';
 
 @Injectable()
 export class ProductsService {
   private products: Product[] = [];
   private nextId = 1;
 
+  private priceContext = new ProductPriceContext(
+    new RegularPriceStrategy(),
+  );
+
   create(createProductDto: CreateProductDto): Product {
-    const finalPrice = this.priceContext.calculatePrice(createProductDto.price);
-    const product: Product = {
-      id: this.nextId++,
+    const finalPrice = this.priceContext.calculatePrice(
+      createProductDto.price,
+    );
+
+    const product = ProductFactory.create('physical', {
       ...createProductDto,
       price: finalPrice,
-    };
+    });
+
+    product.id = this.nextId++;
 
     this.products.push(product);
     return product;
@@ -41,7 +49,10 @@ export class ProductsService {
     );
   }
 
-  findByPriceRange(minPrice?: number, maxPrice?: number): Product[] {
+  findByPriceRange(
+    minPrice?: number,
+    maxPrice?: number,
+  ): Product[] {
     return this.products.filter((product) => {
       if (minPrice !== undefined && product.price < minPrice) {
         return false;
@@ -74,9 +85,7 @@ export class ProductsService {
     updateProductDto: UpdateProductDto,
   ): Product {
     const product = this.findOne(id);
-
     Object.assign(product, updateProductDto);
-
     return product;
   }
 
@@ -93,7 +102,4 @@ export class ProductsService {
 
     this.products.splice(index, 1);
   }
-  private priceContext = new ProductPriceContext(
-    new RegularPriceStrategy(),
-  );
 }
