@@ -1,114 +1,685 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS + Patrones de Diseño
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST desarrollada con NestJS y TypeScript para la gestión de productos, categorías y órdenes, aplicando una arquitectura modular y patrones de diseño.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📌 Descripción
 
-## Description
+Este proyecto consiste en el desarrollo de una API REST utilizando **NestJS + TypeScript**, implementando una estructura modular y separando responsabilidades entre controladores, servicios, DTOs y entidades.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+La aplicación permite gestionar:
 
-## Project setup
+- Productos
+- Categorías
+- Órdenes
+
+Además, se implementan tres patrones de diseño:
+
+- **Factory Method** — patrón creacional.
+- **Adapter** — patrón estructural.
+- **Strategy** — patrón de comportamiento.
+
+Los datos se almacenan en memoria mediante arreglos, sin utilizar una base de datos.
+
+---
+
+# 🎯 Objetivo
+
+El objetivo del proyecto es desarrollar una API REST aplicando los conceptos fundamentales de NestJS:
+
+- Módulos.
+- Controladores.
+- Servicios.
+- Inyección de dependencias.
+- DTOs.
+- Validaciones.
+- Parámetros de ruta.
+- Parámetros de consulta.
+- Manejo de errores.
+
+También se busca integrar correctamente patrones de diseño dentro de la aplicación, justificando su utilización y mostrando su funcionamiento.
+
+---
+
+# 🛠️ Tecnologías utilizadas
+
+- **Node.js**
+- **NestJS**
+- **TypeScript**
+- **class-validator**
+- **class-transformer**
+- **npm**
+- **Git / GitHub**
+- **Postman**
+
+---
+
+# 📋 Requisitos
+
+Para ejecutar el proyecto se necesita tener instalado:
+
+- Node.js
+- npm
+- NestJS CLI
+
+Para comprobar las instalaciones:
 
 ```bash
-$ npm install
+node -v
+npm -v
+nest -v
 ```
 
-## Compile and run the project
+---
+
+# 🚀 Instalación
+
+Clonar el repositorio:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/Lara78a/tp-nestjs-patrones-diseno.git
 ```
 
-## Run tests
+Ingresar al proyecto:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd tp-nestjs-patrones-diseno
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Instalar las dependencias:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Observability
+# ▶️ Ejecución
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+Para ejecutar la aplicación en modo desarrollo:
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+```bash
+npm run start:dev
+```
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+La aplicación queda disponible en:
 
-## Resources
+```text
+http://localhost:3000
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### Aplicación ejecutándose
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observer](https://observer.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+![Aplicación ejecutándose](docs/evidencias/07-application-running.png)
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# 📁 Estructura del proyecto
 
-## Stay in touch
+La aplicación se organiza utilizando la estructura modular de NestJS.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```text
+src/
+├── categories/
+│   ├── dto/
+│   ├── entities/
+│   ├── categories.controller.ts
+│   ├── categories.service.ts
+│   └── categories.module.ts
+│
+├── orders/
+│   ├── adapters/
+│   │   └── payment.adapter.ts
+│   ├── dto/
+│   ├── entities/
+│   ├── orders.controller.ts
+│   ├── orders.service.ts
+│   └── orders.module.ts
+│
+├── products/
+│   ├── dto/
+│   ├── entities/
+│   ├── factories/
+│   │   └── product.factory.ts
+│   ├── strategies/
+│   │   └── product-price.strategy.ts
+│   ├── products.controller.ts
+│   ├── products.service.ts
+│   └── products.module.ts
+│
+├── app.module.ts
+└── main.ts
+```
 
-## License
+La lógica de negocio se encuentra principalmente en los **Services**, mientras que los **Controllers** se encargan de recibir las solicitudes HTTP y delegar las operaciones correspondientes.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+# 📦 Productos
+
+Los productos contienen los siguientes datos:
+
+```text
+id
+name
+description
+price
+stock
+categoryId
+```
+
+## Operaciones disponibles
+
+### Obtener todos los productos
+
+```http
+GET /products
+```
+
+### Obtener un producto por ID
+
+```http
+GET /products/:id
+```
+
+### Crear un producto
+
+```http
+POST /products
+```
+
+Ejemplo:
+
+```json
+{
+  "name": "Notebook",
+  "description": "Notebook de prueba",
+  "price": 1500,
+  "stock": 10,
+  "categoryId": 1
+}
+```
+
+### Actualizar un producto
+
+```http
+PUT /products/:id
+```
+
+### Eliminar un producto
+
+```http
+DELETE /products/:id
+```
+
+---
+
+## 🔎 Búsqueda y filtros de productos
+
+### Buscar por categoría
+
+```http
+GET /products/category/:categoryId
+```
+
+### Buscar por nombre
+
+```http
+GET /products/search?name=Notebook
+```
+
+### Filtrar por rango de precio
+
+```http
+GET /products?minPrice=1000&maxPrice=2000
+```
+
+---
+
+# 🗂️ Categorías
+
+Las categorías contienen:
+
+```text
+id
+name
+```
+
+## Operaciones disponibles
+
+### Obtener todas las categorías
+
+```http
+GET /categories
+```
+
+### Obtener una categoría
+
+```http
+GET /categories/:id
+```
+
+### Crear una categoría
+
+```http
+POST /categories
+```
+
+Ejemplo:
+
+```json
+{
+  "name": "Electrónica"
+}
+```
+
+### Actualizar una categoría
+
+```http
+PUT /categories/:id
+```
+
+### Eliminar una categoría
+
+```http
+DELETE /categories/:id
+```
+
+---
+
+# 🛒 Órdenes
+
+Las órdenes contienen:
+
+```text
+id
+productId
+quantity
+```
+
+## Operaciones disponibles
+
+### Obtener todas las órdenes
+
+```http
+GET /orders
+```
+
+### Obtener una orden
+
+```http
+GET /orders/:id
+```
+
+### Crear una orden
+
+```http
+POST /orders
+```
+
+Ejemplo:
+
+```json
+{
+  "productId": 1,
+  "quantity": 2
+}
+```
+
+### Actualizar una orden
+
+```http
+PUT /orders/:id
+```
+
+### Eliminar una orden
+
+```http
+DELETE /orders/:id
+```
+
+---
+
+# ✅ DTOs y validaciones
+
+La aplicación utiliza DTOs para definir y validar los datos recibidos.
+
+Las validaciones principales para productos son:
+
+- El nombre es obligatorio.
+- El precio debe ser mayor a 0.
+- El stock debe ser mayor o igual a 0.
+- La categoría es obligatoria.
+
+Para las órdenes:
+
+- El producto es obligatorio.
+- La cantidad es obligatoria.
+- La cantidad debe ser mayor o igual a 1.
+
+La validación se activa globalmente mediante `ValidationPipe` en `main.ts`.
+
+Cuando se envían datos inválidos, la API responde con un código HTTP `400 Bad Request`.
+
+### Ejemplo de validación
+
+![Validaciones de productos](docs/evidencias/06-validation.png)
+
+---
+
+# 🧩 Patrones de diseño
+
+En el proyecto se implementaron tres patrones de diseño correspondientes a las tres categorías solicitadas.
+
+| Patrón | Tipo | Implementación |
+|---|---|---|
+| Factory Method | Creacional | Productos |
+| Adapter | Estructural | Pagos de órdenes |
+| Strategy | Comportamiento | Precio de productos |
+
+---
+
+# 🏭 Factory Method
+
+El patrón **Factory Method** se utiliza para encapsular la creación de productos.
+
+Se encuentra en:
+
+```text
+src/products/factories/product.factory.ts
+```
+
+Se utilizan:
+
+- `ProductCreator`
+- `PhysicalProductCreator`
+- `DigitalProductCreator`
+- `ProductFactory`
+
+El `ProductsService` utiliza `ProductFactory` para crear los productos en lugar de realizar directamente toda la construcción del objeto.
+
+### Diagrama
+
+```mermaid
+classDiagram
+    ProductCreator <|-- PhysicalProductCreator
+    ProductCreator <|-- DigitalProductCreator
+    ProductFactory --> ProductCreator
+    ProductsService --> ProductFactory
+```
+
+### Justificación
+
+El patrón permite separar la lógica de creación de los productos de la lógica principal del servicio.
+
+De esta manera, la creación puede extenderse a diferentes tipos de productos sin concentrar toda la lógica en `ProductsService`.
+
+---
+
+# 🔌 Adapter
+
+El patrón **Adapter** se utiliza para adaptar un servicio externo de pagos a la interfaz utilizada por la aplicación.
+
+Se encuentra en:
+
+```text
+src/orders/adapters/payment.adapter.ts
+```
+
+Se utilizan:
+
+- `PaymentService`
+- `ExternalPaymentService`
+- `PaymentAdapter`
+
+El `PaymentAdapter` adapta el método `makePayment()` del servicio externo al método `pay()` definido por la aplicación.
+
+### Diagrama
+
+```mermaid
+classDiagram
+    PaymentService <|.. PaymentAdapter
+    PaymentAdapter --> ExternalPaymentService
+    OrdersService --> PaymentAdapter
+```
+
+### Justificación
+
+El Adapter permite que `OrdersService` utilice un servicio de pagos externo sin depender directamente de su interfaz original.
+
+De esta manera se reduce el acoplamiento entre el sistema y el servicio externo.
+
+---
+
+# 🔄 Strategy
+
+El patrón **Strategy** se utiliza para encapsular diferentes formas de calcular el precio de un producto.
+
+Se encuentra en:
+
+```text
+src/products/strategies/product-price.strategy.ts
+```
+
+Se utilizan:
+
+- `ProductPriceStrategy`
+- `RegularPriceStrategy`
+- `DiscountPriceStrategy`
+- `ProductPriceContext`
+
+### Diagrama
+
+```mermaid
+classDiagram
+    ProductPriceStrategy <|.. RegularPriceStrategy
+    ProductPriceStrategy <|.. DiscountPriceStrategy
+    ProductPriceContext --> ProductPriceStrategy
+    ProductsService --> ProductPriceContext
+```
+
+### Justificación
+
+El patrón permite encapsular diferentes algoritmos de cálculo de precio y cambiar la estrategia utilizada sin modificar directamente la lógica del servicio.
+
+Actualmente se encuentra integrada la estrategia de precio regular, mientras que también se implementó una estrategia de descuento.
+
+---
+
+# 💾 Almacenamiento
+
+Para este trabajo se utiliza almacenamiento **en memoria** mediante arreglos.
+
+Por ejemplo:
+
+```ts
+private products: Product[] = [];
+```
+
+Esto significa que los datos se mantienen mientras la aplicación está ejecutándose y se pierden cuando el servidor se reinicia.
+
+No se utiliza una base de datos en esta implementación.
+
+---
+
+# 🧪 Evidencias de funcionamiento
+
+Las siguientes capturas muestran diferentes operaciones realizadas sobre la API mediante Postman.
+
+## Creación de producto
+
+```http
+POST /products
+```
+
+![Creación de producto](docs/evidencias/01-product-create.png)
+
+---
+
+## Listado de productos
+
+```http
+GET /products
+```
+
+![Listado de productos](docs/evidencias/02-product-list.png)
+
+---
+
+## Búsqueda de productos
+
+```http
+GET /products/search?name=Notebook
+```
+
+![Búsqueda de productos](docs/evidencias/03-product-search.png)
+
+---
+
+## Creación de categoría
+
+```http
+POST /categories
+```
+
+![Creación de categoría](docs/evidencias/04-category-create.png)
+
+---
+
+## Creación de orden
+
+```http
+POST /orders
+```
+
+![Creación de orden](docs/evidencias/05-order-create.png)
+
+---
+
+## Validación de datos
+
+Se realizó una prueba enviando datos inválidos al endpoint de productos.
+
+La API responde correctamente con `400 Bad Request`.
+
+![Validaciones de productos](docs/evidencias/06-validation.png)
+
+---
+
+# 📌 Resumen de endpoints
+
+## Productos
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/products` | Obtener productos |
+| GET | `/products/:id` | Obtener producto por ID |
+| POST | `/products` | Crear producto |
+| PUT | `/products/:id` | Actualizar producto |
+| DELETE | `/products/:id` | Eliminar producto |
+| GET | `/products/category/:categoryId` | Filtrar por categoría |
+| GET | `/products/search?name=...` | Buscar por nombre |
+| GET | `/products?minPrice=...&maxPrice=...` | Filtrar por precio |
+
+## Categorías
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/categories` | Obtener categorías |
+| GET | `/categories/:id` | Obtener categoría por ID |
+| POST | `/categories` | Crear categoría |
+| PUT | `/categories/:id` | Actualizar categoría |
+| DELETE | `/categories/:id` | Eliminar categoría |
+
+## Órdenes
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/orders` | Obtener órdenes |
+| GET | `/orders/:id` | Obtener orden por ID |
+| POST | `/orders` | Crear orden |
+| PUT | `/orders/:id` | Actualizar orden |
+| DELETE | `/orders/:id` | Eliminar orden |
+
+---
+
+# 🧹 Lint y formato
+
+Para ejecutar el análisis de código:
+
+```bash
+npm run lint
+```
+
+Para formatear el código:
+
+```bash
+npm run format
+```
+
+---
+
+# 📜 Scripts disponibles
+
+```bash
+npm run start
+npm run start:dev
+npm run start:prod
+npm run build
+npm run lint
+npm run format
+```
+
+> Los tests automáticos generados por NestJS se mantienen en el proyecto, pero no se utilizan como evidencia principal de funcionamiento. Las pruebas funcionales presentadas en este README fueron realizadas mediante Postman.
+
+---
+
+# 📊 Resumen de patrones implementados
+
+### Factory Method
+
+**Tipo:** Creacional
+
+Permite encapsular la creación de productos mediante una fábrica y diferentes creadores.
+
+### Adapter
+
+**Tipo:** Estructural
+
+Permite adaptar un servicio externo de pagos a la interfaz utilizada por la aplicación.
+
+### Strategy
+
+**Tipo:** Comportamiento
+
+Permite encapsular diferentes estrategias para el cálculo del precio de los productos.
+
+Los tres patrones se encuentran integrados dentro de la aplicación y son utilizados por los servicios correspondientes.
+
+---
+
+# 📌 Estado del proyecto
+
+La API cuenta con:
+
+- CRUD de productos.
+- CRUD de categorías.
+- CRUD de órdenes.
+- Búsqueda de productos.
+- Filtros por categoría.
+- Filtros por rango de precio.
+- DTOs.
+- Validaciones.
+- Manejo de errores.
+- Factory Method.
+- Adapter.
+- Strategy.
+- Evidencias de funcionamiento mediante Postman.
+- Documentación del proyecto.
+
+---
+
+# 👩‍💻 Autores
+
+Iara Fernandez
+
+Lara Magallanes
