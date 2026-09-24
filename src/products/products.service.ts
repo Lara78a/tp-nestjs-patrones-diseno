@@ -1,3 +1,8 @@
+import {
+  DiscountPriceStrategy,
+  ProductPriceContext,
+  RegularPriceStrategy,
+} from './strategies/product-price.strategy';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -9,9 +14,11 @@ export class ProductsService {
   private nextId = 1;
 
   create(createProductDto: CreateProductDto): Product {
+    const finalPrice = this.priceContext.calculatePrice(createProductDto.price);
     const product: Product = {
       id: this.nextId++,
       ...createProductDto,
+      price: finalPrice,
     };
 
     this.products.push(product);
@@ -86,4 +93,7 @@ export class ProductsService {
 
     this.products.splice(index, 1);
   }
+  private priceContext = new ProductPriceContext(
+    new RegularPriceStrategy(),
+  );
 }
