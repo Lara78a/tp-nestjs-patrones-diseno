@@ -1,114 +1,224 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# TP NestJS - Patrones de Diseño
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST desarrollada con **NestJS** y **TypeScript** para el trabajo práctico de la materia **Patrones de Diseño**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+El proyecto está organizado mediante módulos y permite gestionar diferentes recursos de una aplicación, incluyendo **productos, categorías y órdenes**.
 
-## Description
+## Tecnologías utilizadas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* **Node.js**
+* **TypeScript**
+* **NestJS**
+* **Express**
+* **class-validator**
+* **class-transformer**
+* **Jest**
+* **Supertest**
+* **Prettier**
+* **Oxlint**
 
-## Project setup
+## Requisitos
 
-```bash
-$ npm install
-```
+Antes de ejecutar el proyecto es necesario tener instalado:
 
-## Compile and run the project
+* Node.js
+* npm
+
+Podés comprobar que estén instalados ejecutando:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+node --version
+npm --version
 ```
 
-## Run tests
+## Instalación
+
+Clonar el repositorio:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone <URL_DEL_REPOSITORIO>
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Ingresar a la carpeta del proyecto:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+cd tp-nestjs-patrones-diseno
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Instalar las dependencias:
 
-## Observability
+```bash
+npm install
+```
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+## Ejecución
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+### Modo desarrollo
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+```bash
+npm run start:dev
+```
 
-## Resources
+La aplicación se ejecutará en modo desarrollo y se actualizará automáticamente al detectar cambios.
 
-Check out a few resources that may come in handy when working with NestJS:
+### Modo normal
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observer](https://observer.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run start
+```
 
-## Support
+### Modo producción
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Primero compilar el proyecto:
 
-## Stay in touch
+```bash
+npm run build
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Luego ejecutar:
 
-## License
+```bash
+npm run start:prod
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Estructura del proyecto
+
+```text
+src/
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
+├── main.ts
+│
+├── categories/
+│   ├── categories.controller.ts
+│   ├── categories.module.ts
+│   └── categories.service.ts
+│
+├── orders/
+│   ├── orders.controller.ts
+│   ├── orders.module.ts
+│   └── orders.service.ts
+│
+└── products/
+    ├── products.controller.ts
+    ├── products.module.ts
+    └── products.service.ts
+
+test/
+└── jest-e2e.json
+```
+
+### Módulos principales
+
+**Products**
+
+Gestiona las operaciones relacionadas con los productos.
+
+**Categories**
+
+Gestiona las categorías utilizadas por los productos.
+
+**Orders**
+
+Gestiona las órdenes de la aplicación.
+
+## Validaciones de Products
+
+Para la creación de productos se utiliza `CreateProductDto`, junto con las validaciones proporcionadas por `class-validator`.
+
+| Campo         | Tipo     | Validaciones                       |
+| ------------- | -------- | ---------------------------------- |
+| `name`        | `string` | Obligatorio y no puede estar vacío |
+| `description` | `string` | Debe ser de tipo texto             |
+| `price`       | `number` | Mínimo `0.01`                      |
+| `stock`       | `number` | Mínimo `0`                         |
+| `categoryId`  | `number` | Obligatorio                        |
+
+### Ejemplo de producto válido
+
+```json
+{
+  "name": "Producto de ejemplo",
+  "description": "Descripción del producto",
+  "price": 1500,
+  "stock": 10,
+  "categoryId": 1
+}
+```
+
+### Consideraciones
+
+* `name` no puede estar vacío.
+* `description` debe ser un texto.
+* `price` debe ser un número mayor o igual a `0.01`.
+* `stock` debe ser un número mayor o igual a `0`.
+* `categoryId` debe ser un número y debe estar presente.
+
+## Tests
+
+El proyecto utiliza **Jest** para realizar pruebas unitarias y pruebas end-to-end.
+
+### Ejecutar las pruebas
+
+```bash
+npm test
+```
+
+### Ejecutar las pruebas en modo watch
+
+```bash
+npm run test:watch
+```
+
+### Ejecutar pruebas end-to-end
+
+```bash
+npm run test:e2e
+```
+
+### Generar cobertura
+
+```bash
+npm run test:cov
+```
+
+## Lint
+
+Para analizar el código utilizando Oxlint:
+
+```bash
+npm run lint
+```
+
+## Formateo
+
+Para aplicar el formato definido por Prettier:
+
+```bash
+npm run format
+```
+
+## Scripts disponibles
+
+| Comando               | Descripción                             |
+| --------------------- | --------------------------------------- |
+| `npm run start`       | Inicia la aplicación                    |
+| `npm run start:dev`   | Inicia la aplicación en modo desarrollo |
+| `npm run start:debug` | Inicia la aplicación en modo debug      |
+| `npm run start:prod`  | Ejecuta la aplicación en producción     |
+| `npm run build`       | Compila el proyecto                     |
+| `npm test`            | Ejecuta las pruebas                     |
+| `npm run test:watch`  | Ejecuta las pruebas en modo watch       |
+| `npm run test:e2e`    | Ejecuta las pruebas end-to-end          |
+| `npm run test:cov`    | Genera el reporte de cobertura          |
+| `npm run lint`        | Analiza el código con Oxlint            |
+| `npm run format`      | Formatea el código con Prettier         |
+
+## Estado del proyecto
+
+El proyecto se encuentra desarrollado como parte de un trabajo práctico académico utilizando NestJS y TypeScript.
+
+## Licencia
+
+Este proyecto fue desarrollado con fines académicos.
